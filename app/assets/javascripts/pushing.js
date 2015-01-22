@@ -1,8 +1,3 @@
-<%
-  u = URI.parse "http://localhost/"
-  u.port = 5001
-%>
-
 var socket;
 
 $(document).ready(function() {
@@ -11,7 +6,7 @@ $(document).ready(function() {
    */
   if (logged_in) {
     socket = io.connect(
-      '<%= u.to_s %>?user_id=' + user_id,
+      'http://localhost:5001/?user_id=' + user_id,
       {
         reconnectionDelay: 5000,
         reconnectionDelayMax: 10000,
@@ -33,13 +28,13 @@ $(document).ready(function() {
 (function() {
   function doSomething(data) {
     console.log(data);
-    $('.push-wrapper').append(data.notification + "<br/>");
+    $('.push-wrapper').append(data.notification + '<br/>');
   }
 
   // Hook to NodeJS Queue
   $(document).ready(function() {
     if (logged_in) {
-      socket.on("notification", function(data) {
+      socket.on('notification', function(data) {
         doSomething(data);
       });
     }
