@@ -28,7 +28,8 @@ $(document).ready(function() {
 (function() {
   function doSomething(data) {
     console.log(data);
-    $('.push-wrapper').append(data.notification + '<br/>');
+    $('#push-wrapper').append("<div>" + data.notification + "</div>")
+                      .animate({ scrollTop: $('#push-wrapper').prop("scrollHeight") }, 500);
   }
 
   // Hook to NodeJS Queue

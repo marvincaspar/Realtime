@@ -4,7 +4,7 @@ class HomeController < ApplicationController
 
   def push
     data = {
-             notification: "Some notification #{Time.now}"
+             notification: "<strong>user:</strong> #{ params[:message] }"
            }
 
     $redis.publish("user-1:notification", data.to_json)

@@ -3,6 +3,8 @@
   var user_id = 1
 </script>
 
-<%= link_to "Send push notification", home_push_path, remote: true -%>
+<div id="push-wrapper"></div>
 
-<div class="push-wrapper"></div>
+<%= form_tag(home_push_path, remote: true, id: "message-form") do %>
+  <%= text_field_tag 'message', nil, autofocus: true, placeholder: 'Enter message...' %>
+<% end %>

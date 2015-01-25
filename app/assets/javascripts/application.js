@@ -14,3 +14,9 @@
 //= require jquery_ujs
 //= require socket.io
 //= require pushing
+
+$(document).ready(function () {
+  $("#message-form").bind("ajax:complete", function (event,xhr,status) {
+    $('#message').val('');
+  });
+});
